@@ -771,6 +771,8 @@ class OAuth2 {
 			return array($authHeaders['PHP_AUTH_USER'], $authHeaders['PHP_AUTH_PW']);
 		} elseif (empty($inputData['client_id'])) { // No credentials were specified
 			throw new OAuth2ServerException(self::HTTP_BAD_REQUEST, self::ERROR_INVALID_CLIENT, 'Client id was not found in the headers or body');
+		} elseif (empty($inputData['client_secret'])) { // No credentials were specified
+			throw new OAuth2ServerException(self::HTTP_BAD_REQUEST, self::ERROR_INVALID_CLIENT, 'Client secret was not found in the headers or body');
 		} else {
 			// This method is not recommended, but is supported by specification
 			return array($inputData['client_id'], $inputData['client_secret']);
