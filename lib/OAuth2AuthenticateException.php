@@ -50,6 +50,7 @@ class OAuth2AuthenticateException extends OAuth2ServerException {
 	 * @ingroup oauth2_section_5
 	 */
 	protected function sendHeaders() {
+		parent::sendHeaders();
 		header($this->header);
 	}
 }
